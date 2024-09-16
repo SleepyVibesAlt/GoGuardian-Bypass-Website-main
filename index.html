@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function checkCredentials() {
+        fetch("password.txt")
+          .then((response) => response.text())
+          .then((data) => {
+            var credentials = data.split("\n");
+            var storedUsername = credentials[0].trim();
+            var storedPassword = credentials[1].trim();
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username === storedUsername && password === storedPassword) {
+              window.location.href = "select.html";
+            } else {
+              alert("Incorrect credentials, Please try again!");
+            }
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Please login!</h2>
+    <form id="loginForm">
+      Username: <input type="text" id="username" /><br />
+      Password: <input type="password" id="password" />
+      <input type="button" value="Submit" onclick="checkCredentials()" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aspect Impact Bypassing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aspect Impact Bypassing System</h1>
+    <input type="text" id="url" name="url" placeholder="Enter URL" oninput="addHttps(this.value)" onkeypress="handleKeyPress(event)">
+    <button onclick="generateIframe()">Bypass!</button>
+    <br><br>
+    <p style="color: #ff9900;">Some Sites Are Not Supported.</p>
+    <b>
+        <p>
+            <span style="color: lightcoral; font-size: 18px">:)</span>
+        </p>
+    </b>
+    <div id="searchResult"></div>
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                var url = document.getElementById('url').value;
+                document.getElementById('searchResult').innerHTML = `You searched for: <a href="${url}">${url}</a>`;
+            }
+        }
+    </script>
+</body>
+</html>
